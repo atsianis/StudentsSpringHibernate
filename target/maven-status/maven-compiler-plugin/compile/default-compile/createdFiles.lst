@@ -1,0 +1,7 @@
+com\mycompany\studentsspringhibernate\models\Student.class
+com\mycompany\studentsspringhibernate\dao\StudentDao.class
+com\mycompany\studentsspringhibernate\services\StudentService.class
+com\mycompany\studentsspringhibernate\configuration\StudentSpringHibernateConfiguration.class
+com\mycompany\studentsspringhibernate\configuration\StudentSpringHibernate.class
+com\mycompany\studentsspringhibernate\controllers\StudentController.class
+com\mycompany\studentsspringhibernate\HibernateUtil.class
