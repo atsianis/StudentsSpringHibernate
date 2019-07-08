@@ -29,4 +29,14 @@ public class StudentService {
         StudentDao sdao = new StudentDao();
         sdao.updateStudent(s.getId(), s.getSection());
     }
+    
+    public Student getStudentById(int id){
+        StudentDao sdao = new StudentDao();
+        return sdao.getStudentById(id);
+    }
+    
+    public void deleteStudent(int id){
+        StudentDao sdao = new StudentDao();
+        sdao.deleteStudent(id);
+    }
 }

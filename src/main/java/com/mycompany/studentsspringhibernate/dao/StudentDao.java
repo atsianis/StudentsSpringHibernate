@@ -79,5 +79,15 @@ public class StudentDao {
 		session.getTransaction().commit();
 		session.close();
 	}
+        
+        public Student getStudentById(int id){
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            
+            Student s = (Student) session.get(Student.class, id);
+            session.close();
+            return s;
+            
+        }
     
 }
