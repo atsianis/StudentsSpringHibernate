@@ -24,7 +24,7 @@
         <table border="1" id="myTable">
             <tr><td>First Name</td><td>Last Name</td><td>Section</td></tr>
             <c:forEach var="s" items="${students}">
-                <tr><td>${s.firstName}</td><td>${s.lastName}</td><td>${s.section}</td><td><a href="studentupdate/${s.id}">Edit</a></td><td><a href="studentdelete/${s.id}">Delete</a></td></tr>
+                <tr><td>${s.firstName}</td><td>${s.lastName}</td><td>${s.section}</td><td><a href="/StudentsSpringHibernate/studentupdate/${s.id}">Edit</a></td><td><a href="/StudentsSpringHibernate/studentdelete/${s.id}">Delete</a></td></tr>
             </c:forEach>
         </table>
         <p>${message}</p><br>
