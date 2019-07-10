@@ -8,11 +8,11 @@ import org.hibernate.Session;
 
 public class StudentDao {
     
-    public int saveStudent(String firstName, String lastName, String section) {
-		Student student = new Student();
-		student.setFirstName(firstName);
-		student.setLastName(lastName);
-		student.setSection(section);
+    public int saveStudent(Student s) {
+//		Student student = new Student();
+//		student.setFirstName(firstName);
+//		student.setLastName(lastName);
+//		student.setSection(section);
                 
                 //To antistoixo tou em
                 // kai em=emf.createEntityManager
@@ -24,7 +24,7 @@ public class StudentDao {
                 // kserei ennoeitai se poio table antistoixei auto pou tou pernaw
                 // kai kanei mono tou to save
                 // by default epistrefei to id pou tou dinei
-		int id = (Integer) session.save(student);
+		int id = (Integer) session.save(s);
 		session.getTransaction().commit();
 		session.close();
 		return id;
@@ -52,7 +52,7 @@ public class StudentDao {
 	/**
 	 * This method updates a specific Student object
 	 */
-	public void updateStudent(int id, String section) {
+	public void updateStudent(int id, Student s) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
                 // antistoixo tou em.find(Student.class, id) pou kaname sto JPA
@@ -61,7 +61,9 @@ public class StudentDao {
                 //ALLA den prepei na peiraksoume to id giati tha xasoume to mapping
                 // pou exei dhmiourgithei
 		Student student = (Student) session.get(Student.class, id);
-		student.setSection(section);
+		student.setSection(s.getSection());
+                student.setFirstName(s.getFirstName());
+                student.setLastName(s.getLastName());
 		//session.update(student);//No need to update manually as it will be updated automatically on transaction close.
 		session.getTransaction().commit();
 		session.close();

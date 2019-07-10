@@ -20,14 +20,14 @@ public class StudentService {
         return sdao.getAllStudents();
     }
     
-    public int saveStudent(String firstName, String lastName, String section){
+    public int saveStudent(Student s){
         StudentDao sdao = new StudentDao();
-        return sdao.saveStudent(firstName,lastName,section);
+        return sdao.saveStudent(s);
     }
     
     public void updateStudent(Student s){
         StudentDao sdao = new StudentDao();
-        sdao.updateStudent(s.getId(), s.getSection());
+        sdao.updateStudent(s.getId(),s);
     }
     
     public Student getStudentById(int id){

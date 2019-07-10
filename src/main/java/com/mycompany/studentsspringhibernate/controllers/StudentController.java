@@ -4,8 +4,10 @@ package com.mycompany.studentsspringhibernate.controllers;
 import com.mycompany.studentsspringhibernate.models.Student;
 import com.mycompany.studentsspringhibernate.services.StudentService;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,10 +49,16 @@ public class StudentController {
         }
         
         @RequestMapping(value = "/studentsave", method = RequestMethod.POST)
+        // sto sygkekrimeno, to add new mou paizei kai me to modelattribute, pernontas mesa sto service
+        // olokliro object kai me @valid profanws. Vlepe to SpringHibernateNoXML pou to model attribute sto add new
+        // mou paizei mono otan pernaw sta service,dao ta stoixeia toy object ena ena (xwris to id)
 	public String addsave(ModelMap model,@ModelAttribute("student") Student s) {
+//            if (result.hasErrors()) {
+//                return "index";
+//            }
             StudentService ss = new StudentService();
             if (s.getId()==0){//new student
-                ss.saveStudent(s.getFirstName(),s.getLastName(),s.getSection());
+                ss.saveStudent(s);
                 model.addAttribute("message", "Insert Completed");
             }else{//update old student
                 ss.updateStudent(s);
